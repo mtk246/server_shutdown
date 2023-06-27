@@ -1,10 +1,12 @@
 require('dotenv').config();
 
-const nextConfig = {
-  reactStrictMode: true,
-  env: {
-    API_URL: process.env.API_URL,
+module.exports = {
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.node$/,
+      use: 'node-loader',
+    });
+
+    return config;
   },
 };
-
-module.exports = nextConfig;
